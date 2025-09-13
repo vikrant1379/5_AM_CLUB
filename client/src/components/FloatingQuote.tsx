@@ -39,92 +39,21 @@ export function FloatingQuote() {
         ))}
       </div>
 
-      {/* World-Class Motivational Quotes */}
-      <div className="space-y-4">
-        <Card className="p-6 bg-gradient-to-br from-purple-100/60 via-indigo-50/40 to-blue-50/30 dark:from-slate-800/50 dark:via-slate-700/40 dark:to-slate-800/30 border-purple-300 dark:border-slate-600/50">
-          <div className="text-center">
-            <div className="text-3xl mb-3">🧠</div>
-            <p className="text-purple-700 dark:text-slate-300 italic text-lg leading-relaxed">
-              "You have power over your mind - not outside events. Realize this, and you will find strength."
-            </p>
-            <p className="text-sm text-purple-600 dark:text-slate-400 mt-3 font-medium">
-              - Marcus Aurelius, Roman Emperor & Stoic Philosopher
-            </p>
-          </div>
-        </Card>
-
-        <Card className="p-6 bg-gradient-to-br from-emerald-100/60 via-green-50/40 to-teal-50/30 dark:from-slate-800/50 dark:via-slate-700/40 dark:to-slate-800/30 border-emerald-300 dark:border-slate-600/50">
-          <div className="text-center">
-            <div className="text-3xl mb-3">💪</div>
-            <p className="text-emerald-700 dark:text-slate-300 italic text-lg leading-relaxed">
-              "No man is free who is not master of himself."
-            </p>
-            <p className="text-sm text-emerald-600 dark:text-slate-400 mt-3 font-medium">
-              - Epictetus, Ancient Greek Stoic Philosopher
-            </p>
-          </div>
-        </Card>
-
-        <Card className="p-6 bg-gradient-to-br from-orange-100/60 via-amber-50/40 to-yellow-50/30 dark:from-slate-800/50 dark:via-slate-700/40 dark:to-slate-800/30 border-orange-300 dark:border-slate-600/50">
-          <div className="text-center">
-            <div className="text-3xl mb-3">🌟</div>
-            <p className="text-orange-700 dark:text-slate-300 italic text-lg leading-relaxed">
-              "Mastering others is strength. Mastering yourself is true power."
-            </p>
-            <p className="text-sm text-orange-600 dark:text-slate-400 mt-3 font-medium">
-              - Lao Tzu, Ancient Chinese Philosopher
-            </p>
-          </div>
-        </Card>
-
-        <Card className="p-6 bg-gradient-to-br from-rose-100/60 via-pink-50/40 to-red-50/30 dark:from-slate-800/50 dark:via-slate-700/40 dark:to-slate-800/30 border-rose-300 dark:border-slate-600/50">
-          <div className="text-center">
-            <div className="text-3xl mb-3">🏆</div>
-            <p className="text-rose-700 dark:text-slate-300 italic text-lg leading-relaxed">
-              "The first and best victory is to conquer self."
-            </p>
-            <p className="text-sm text-rose-600 dark:text-slate-400 mt-3 font-medium">
-              - Plato, Ancient Greek Philosopher
-            </p>
-          </div>
-        </Card>
-
-        <Card className="p-6 bg-gradient-to-br from-cyan-100/60 via-blue-50/40 to-indigo-50/30 dark:from-slate-800/50 dark:via-slate-700/40 dark:to-slate-800/30 border-cyan-300 dark:border-slate-600/50">
-          <div className="text-center">
-            <div className="text-3xl mb-3">☮️</div>
-            <p className="text-cyan-700 dark:text-slate-300 italic text-lg leading-relaxed">
-              "A disciplined mind leads to happiness, and an undisciplined mind leads to suffering."
-            </p>
-            <p className="text-sm text-cyan-600 dark:text-slate-400 mt-3 font-medium">
-              - Buddha, Spiritual Teacher & Philosopher
-            </p>
-          </div>
-        </Card>
-
-        <Card className="p-6 bg-gradient-to-br from-amber-100/60 via-orange-50/40 to-yellow-50/30 dark:from-slate-800/50 dark:via-slate-700/40 dark:to-slate-800/30 border-amber-300 dark:border-slate-600/50">
-          <div className="text-center">
-            <div className="text-3xl mb-3">🕉️</div>
-            <p className="text-amber-700 dark:text-slate-300 italic text-lg leading-relaxed">
-              "We must all suffer one of two things: the pain of discipline or the pain of regret and disappointment."
-            </p>
-            <p className="text-sm text-amber-600 dark:text-slate-400 mt-3 font-medium">
-              - Jim Rohn, American Entrepreneur & Motivational Speaker
-            </p>
-          </div>
-        </Card>
-
-        <Card className="p-6 bg-gradient-to-br from-violet-100/60 via-purple-50/40 to-fuchsia-50/30 dark:from-slate-800/50 dark:via-slate-700/40 dark:to-slate-800/30 border-violet-300 dark:border-slate-600/50">
-          <div className="text-center">
-            <div className="text-3xl mb-3">🎯</div>
-            <p className="text-violet-700 dark:text-slate-300 italic text-lg leading-relaxed">
-              "We are what we repeatedly do. Excellence, then, is not an act, but a habit."
-            </p>
-            <p className="text-sm text-violet-600 dark:text-slate-400 mt-3 font-medium">
-              - Aristotle, Ancient Greek Philosopher
-            </p>
-          </div>
-        </Card>
-      </div>
+      {/* Motivational Quote */}
+      <Card className="p-6 bg-gradient-to-br from-amber-100/60 via-orange-50/40 to-yellow-50/30 dark:from-slate-800/50 dark:via-slate-700/40 dark:to-slate-800/30 border-amber-300 dark:border-slate-600/50">
+        <div className="text-center">
+          <div className="text-4xl mb-4">🕉️</div>
+          <h3 className="text-lg font-semibold text-amber-900 dark:text-slate-100 mb-2">
+            Remember
+          </h3>
+          <p className="text-amber-700 dark:text-slate-300 italic">
+            "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन - You have the right to work, but not to the fruits. This is the essence of disciplined living."
+          </p>
+          <p className="text-sm text-amber-600 dark:text-slate-400 mt-2">
+            - Bhagavad Gita 2.47 (Discipline & Purushartha)
+          </p>
+        </div>
+      </Card>
 
       {/* Quick Tips */}
       <Card className="p-6 bg-gradient-to-br from-green-100 via-emerald-50 to-teal-50 dark:from-slate-800/40 dark:via-slate-700/30 dark:to-slate-800/20 border-green-300 dark:border-slate-600">

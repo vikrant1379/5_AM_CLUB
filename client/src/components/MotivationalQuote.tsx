@@ -1,39 +1,47 @@
 import { useState, useEffect } from "react";
 
 export function MotivationalQuote() {
-  // Vedic quotes focused on discipline and Purusharthas
+  // World-class discipline and motivation quotes from famous philosophers
   const motivationalQuotes = [
     {
-      quote: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन - You have the right to work, but not to the fruits",
-      author: "Bhagavad Gita 2.47 - Discipline in Action"
+      quote: "You have power over your mind - not outside events. Realize this, and you will find strength.",
+      author: "Marcus Aurelius, Roman Emperor & Stoic Philosopher"
     },
     {
-      quote: "योगः कर्मसु कौशलम् - Excellence in action is yoga",
-      author: "Bhagavad Gita 2.50 - Discipline as Yoga"
+      quote: "No man is free who is not master of himself.",
+      author: "Epictetus, Ancient Greek Stoic Philosopher"
     },
     {
-      quote: "धर्मो रक्षति रक्षितः - Dharma protects those who protect it",
-      author: "Mahabharata - First Purushartha"
+      quote: "Mastering others is strength. Mastering yourself is true power.",
+      author: "Lao Tzu, Ancient Chinese Philosopher"
     },
     {
-      quote: "उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः - Success comes through discipline, not mere wishes",
-      author: "Hitopadesha - Discipline for Artha"
+      quote: "The first and best victory is to conquer self.",
+      author: "Plato, Ancient Greek Philosopher"
     },
     {
-      quote: "संयमो हि परं बलम् - Self-control is the highest strength",
-      author: "Bhagavad Gita - Discipline for Moksha"
+      quote: "A disciplined mind leads to happiness, and an undisciplined mind leads to suffering.",
+      author: "Buddha, Spiritual Teacher & Philosopher"
     },
     {
-      quote: "अभ्यासेन तु कौन्तेय वैराग्येण च गृह्यते - Through practice and detachment, it is obtained",
-      author: "Bhagavad Gita 6.35 - Discipline Practice"
+      quote: "We must all suffer one of two things: the pain of discipline or the pain of regret and disappointment.",
+      author: "Jim Rohn, American Entrepreneur & Motivational Speaker"
     },
     {
-      quote: "नियतं कुरु कर्म त्वं - Perform your prescribed duty",
-      author: "Bhagavad Gita 3.8 - Duty as Discipline"
+      quote: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
+      author: "Aristotle, Ancient Greek Philosopher"
     },
     {
-      quote: "स्वधर्मे निधनं श्रेयः - Better to die in one's own dharma",
-      author: "Bhagavad Gita 3.35 - Dharma Discipline"
+      quote: "Self-discipline begins with the mastery of your thoughts. If you don't control what you think, you can't control what you do.",
+      author: "Napoleon Hill, Author & Success Philosopher"
+    },
+    {
+      quote: "The happiness of your life depends upon the quality of your thoughts.",
+      author: "Marcus Aurelius, Roman Emperor & Stoic Philosopher"
+    },
+    {
+      quote: "Be tolerant with others and strict with yourself.",
+      author: "Marcus Aurelius, Roman Emperor & Stoic Philosopher"
     }
   ];
 
