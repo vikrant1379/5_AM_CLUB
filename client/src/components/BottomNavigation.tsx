@@ -1,9 +1,9 @@
-import { Clock, BookOpen, FileText, Play } from "lucide-react";
+import { Clock, BookOpen, FileText, Library } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface BottomNavigationProps {
-  activeTab: 'schedule' | 'reference' | 'rules' | 'videos';
-  onTabChange: (tab: 'schedule' | 'reference' | 'rules' | 'videos') => void;
+  activeTab: 'schedule' | 'reference' | 'rules' | 'library';
+  onTabChange: (tab: 'schedule' | 'reference' | 'rules' | 'library') => void;
 }
 
 export function BottomNavigation({ activeTab, onTabChange }: BottomNavigationProps) {
@@ -30,11 +30,11 @@ export function BottomNavigation({ activeTab, onTabChange }: BottomNavigationPro
       bgColor: 'bg-purple-50',
     },
     {
-      id: 'videos' as const,
-      label: 'Videos',
-      icon: Play,
-      color: 'text-red-600',
-      bgColor: 'bg-red-50',
+      id: 'library' as const,
+      label: 'Library',
+      icon: Library,
+      color: 'text-indigo-600',
+      bgColor: 'bg-indigo-50',
     },
   ];
 
