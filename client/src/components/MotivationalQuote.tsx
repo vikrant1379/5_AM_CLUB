@@ -1,47 +1,95 @@
 import { useState, useEffect } from "react";
 
 export function MotivationalQuote() {
-  // World-class discipline and motivation quotes from famous philosophers
+  // Inspiring discipline quotes from Indian leaders, philosophers, and spiritual masters
   const motivationalQuotes = [
     {
-      quote: "You have power over your mind - not outside events. Realize this, and you will find strength.",
-      author: "Marcus Aurelius, Roman Emperor & Stoic Philosopher"
+      quote: "Arise, awake, and stop not till the goal is reached.",
+      author: "Swami Vivekananda"
     },
     {
-      quote: "No man is free who is not master of himself.",
-      author: "Epictetus, Ancient Greek Stoic Philosopher"
+      quote: "Discipline is not about control, it is about direction.",
+      author: "Sadhguru"
     },
     {
-      quote: "Mastering others is strength. Mastering yourself is true power.",
-      author: "Lao Tzu, Ancient Chinese Philosopher"
+      quote: "Discipline is love for the highest goal.",
+      author: "Sri Sri Ravi Shankar"
     },
     {
-      quote: "The first and best victory is to conquer self.",
-      author: "Plato, Ancient Greek Philosopher"
+      quote: "Discipline and united action are the real source of strength for the nation.",
+      author: "Mahatma Gandhi"
     },
     {
-      quote: "A disciplined mind leads to happiness, and an undisciplined mind leads to suffering.",
-      author: "Buddha, Spiritual Teacher & Philosopher"
+      quote: "Excellence is a continuous process and not an accident.",
+      author: "Dr. APJ Abdul Kalam"
     },
     {
-      quote: "We must all suffer one of two things: the pain of discipline or the pain of regret and disappointment.",
-      author: "Jim Rohn, American Entrepreneur & Motivational Speaker"
+      quote: "Hard work never brings fatigue. It brings satisfaction.",
+      author: "Narendra Modi"
     },
     {
-      quote: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
-      author: "Aristotle, Ancient Greek Philosopher"
+      quote: "If you're clear in your mind and disciplined in your actions, you can face even the most complex challenges.",
+      author: "Nirmala Sitharaman"
     },
     {
-      quote: "Self-discipline begins with the mastery of your thoughts. If you don't control what you think, you can't control what you do.",
-      author: "Napoleon Hill, Author & Success Philosopher"
+      quote: "Discipline is the DNA of leadership. Without self-discipline, one cannot lead others.",
+      author: "Dr. Kiran Bedi"
     },
     {
-      quote: "The happiness of your life depends upon the quality of your thoughts.",
-      author: "Marcus Aurelius, Roman Emperor & Stoic Philosopher"
+      quote: "No effort on this path is ever wasted.",
+      author: "Bhagavad Gita"
     },
     {
-      quote: "Be tolerant with others and strict with yourself.",
-      author: "Marcus Aurelius, Roman Emperor & Stoic Philosopher"
+      quote: "This mind can be your greatest friend, or your worst enemy.",
+      author: "Bhagavad Gita"
+    },
+    {
+      quote: "With faith, discipline and selfless devotion to duty, there is nothing worthwhile that you cannot achieve.",
+      author: "Muhammad Ali Jinnah"
+    },
+    {
+      quote: "It is a good discipline to be forced to work for work's sake, even to the length of not being allowed to enjoy the fruits of one's labour.",
+      author: "Swami Vivekananda"
+    },
+    {
+      quote: "Discipline is the fire in which your talent becomes ability.",
+      author: "Indian Proverb"
+    },
+    {
+      quote: "Learning gives creativity, creativity leads to thinking, thinking provides knowledge, knowledge makes you great.",
+      author: "APJ Abdul Kalam"
+    },
+    {
+      quote: "Let me not pray to be sheltered from dangers, but to be fearless in facing them.",
+      author: "Rabindranath Tagore"
+    },
+    {
+      quote: "Once you start working on something, don't be afraid of failure and don't abandon it.",
+      author: "Chanakya"
+    },
+    {
+      quote: "As soon as the fear approaches near, attack and destroy it.",
+      author: "Chanakya"
+    },
+    {
+      quote: "Self-discipline is the most important personal quality of a leader.",
+      author: "Chanakya"
+    },
+    {
+      quote: "Everything comes to us that belongs to us if we create the capacity to receive it.",
+      author: "Rabindranath Tagore"
+    },
+    {
+      quote: "Faith is the bird that feels the light when the dawn is still dark.",
+      author: "Rabindranath Tagore"
+    },
+    {
+      quote: "We should not fret for what is past, nor should we be anxious about the future; men of discernment deal only with the present moment.",
+      author: "Chanakya"
+    },
+    {
+      quote: "The human soul is on its journey from the law to love, from discipline to liberation.",
+      author: "Rabindranath Tagore"
     }
   ];
 
@@ -69,19 +117,6 @@ export function MotivationalQuote() {
           </div>
         </div>
         
-        {/* Quote indicator dots */}
-        <div className="flex justify-center space-x-1 mt-3">
-          {motivationalQuotes.map((_, index) => (
-            <div
-              key={index}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                index === currentQuote
-                  ? 'bg-amber-600 dark:bg-slate-300 scale-125 shadow-sm'
-                  : 'bg-amber-300 dark:bg-slate-600'
-              }`}
-            />
-          ))}
-        </div>
       </div>
     </div>
   );
