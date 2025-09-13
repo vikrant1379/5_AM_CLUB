@@ -103,7 +103,7 @@ export function DisciplineTimeCard({
             )}
           </div>
           
-          <p className="text-base text-amber-800 dark:text-slate-200 mb-2 leading-relaxed" data-testid={`text-activity-${time.replace(':', '').toLowerCase()}`}>
+          <p className="text-base text-amber-800 dark:text-slate-200 mb-2 leading-relaxed break-words" data-testid={`text-activity-${time.replace(':', '').toLowerCase()}`}>
             {activity}
           </p>
 
