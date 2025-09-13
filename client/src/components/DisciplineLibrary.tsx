@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Play, Pause, Clock, BookOpen, FileText, Headphones, Volume2, Eye, Download, ExternalLink } from "lucide-react";
+import { Play, Pause, Clock, BookOpen, FileText, Headphones, Volume2, Eye, Download, ExternalLink, Maximize2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ContentItem {
@@ -18,6 +18,7 @@ interface ContentItem {
   audioUrl?: string;
   content?: string;
   pdfUrl?: string;
+  externalUrl?: string;
   description: string;
 }
 
@@ -162,6 +163,15 @@ export function DisciplineLibrary() {
         <p>Research shows that morning people tend to be more proactive, optimistic, and successful. The quiet hours before the world wakes up provide uninterrupted time for personal development and goal achievement.</p>
       `
     },
+    {
+      id: "ar3",
+      title: "Ultimate Guide to Morning Routines for Peak Productivity",
+      readTime: "15 min read",
+      theme: "Morning Routine",
+      type: "article",
+      description: "Expert insights and research-backed strategies to enhance your morning routine and boost daily productivity.",
+      externalUrl: "https://www.upskillist.com/blog/ultimate-guide-to-morning-routines-for-peak-productivity/"
+    },
 
     // PDFs (Discipline resources)
     {
@@ -241,22 +251,58 @@ export function DisciplineLibrary() {
         );
 
       case 'article':
-        return (
-          <div className="relative w-full h-48 md:h-56 bg-gradient-to-br from-blue-100 to-indigo-200 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-t-lg flex items-center justify-center">
-            <div className="text-center">
-              <div className="bg-blue-600 p-4 rounded-full mb-4 mx-auto w-16 h-16 flex items-center justify-center">
-                <Eye className="h-8 w-8 text-white" />
+        if (item.externalUrl) {
+          return (
+            <div className="relative w-full h-48 md:h-56 overflow-hidden rounded-t-lg">
+              <iframe
+                src={item.externalUrl}
+                title={item.title}
+                className="absolute inset-0 w-full h-full border-0"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              />
+              {/* Overlay with buttons */}
+              <div className="absolute bottom-2 right-2 flex space-x-2">
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  onClick={() => setSelectedArticle(item)}
+                  className="bg-white/90 hover:bg-white text-gray-900 shadow-lg border"
+                  data-testid={`button-expand-${item.id}`}
+                >
+                  <Maximize2 className="h-3 w-3 mr-1" />
+                  Expand
+                </Button>
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  onClick={() => window.open(item.externalUrl, '_blank')}
+                  className="bg-white/90 hover:bg-white text-gray-900 shadow-lg border"
+                  data-testid={`button-open-${item.id}`}
+                >
+                  <ExternalLink className="h-3 w-3 mr-1" />
+                  Open
+                </Button>
               </div>
-              <Button 
-                onClick={() => setSelectedArticle(item)}
-                className="bg-blue-600 hover:bg-blue-700 text-white"
-              >
-                <BookOpen className="h-4 w-4 mr-2" />
-                Read Article
-              </Button>
             </div>
-          </div>
-        );
+          );
+        } else {
+          return (
+            <div className="relative w-full h-48 md:h-56 bg-gradient-to-br from-blue-100 to-indigo-200 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-t-lg flex items-center justify-center">
+              <div className="text-center">
+                <div className="bg-blue-600 p-4 rounded-full mb-4 mx-auto w-16 h-16 flex items-center justify-center">
+                  <Eye className="h-8 w-8 text-white" />
+                </div>
+                <Button 
+                  onClick={() => setSelectedArticle(item)}
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                >
+                  <BookOpen className="h-4 w-4 mr-2" />
+                  Read Article
+                </Button>
+              </div>
+            </div>
+          );
+        }
 
       case 'pdf':
         return (
@@ -383,10 +429,21 @@ export function DisciplineLibrary() {
             </DialogTitle>
           </DialogHeader>
           <ScrollArea className="mt-4 max-h-[60vh] pr-4">
-            <div 
-              className="prose dark:prose-invert max-w-none text-sm leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: selectedArticle?.content || '' }}
-            />
+            {selectedArticle?.externalUrl ? (
+              <div className="w-full h-[50vh] border rounded-lg overflow-hidden">
+                <iframe
+                  src={selectedArticle.externalUrl}
+                  title={selectedArticle.title}
+                  className="w-full h-full border-0"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                />
+              </div>
+            ) : (
+              <div 
+                className="prose dark:prose-invert max-w-none text-sm leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: selectedArticle?.content || '' }}
+              />
+            )}
           </ScrollArea>
         </DialogContent>
       </Dialog>

@@ -9,7 +9,6 @@ import {
   CheckCircle2
 } from "lucide-react";
 import { DISCIPLINE_SCHEDULE, KEY_RULES, MUST_POST_HIGHLIGHTS } from "@/data/disciplineSchedule";
-import { ArticleViewer } from "@/components/ArticleViewer";
 
 // Utility function to remove AM/PM from time format
 function removeAmPm(timeString: string): string {
@@ -188,12 +187,6 @@ export function QuickReference() {
         </div>
       </Card>
 
-      {/* Morning Routine Research Article */}
-      <ArticleViewer
-        title="Ultimate Guide to Morning Routines for Peak Productivity"
-        url="https://www.upskillist.com/blog/ultimate-guide-to-morning-routines-for-peak-productivity/"
-        description="Expert insights and research-backed strategies to enhance your morning routine and boost daily productivity."
-      />
     </div>
   );
 }
