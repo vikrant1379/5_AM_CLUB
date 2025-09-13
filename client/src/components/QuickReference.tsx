@@ -39,7 +39,7 @@ export function QuickReference() {
         <div className="space-y-3">
           {morningActivities.map((activity, index) => (
             <div key={index} className="flex items-center space-x-3 p-3 rounded-lg bg-white/70 dark:bg-card/50 border border-orange-100 dark:border-orange-800/50">
-              <div className="text-lg font-mono text-orange-600 w-20 flex-shrink-0 text-center">
+              <div className="text-sm font-mono text-orange-600 w-32 flex-shrink-0 text-center whitespace-nowrap">
                 {activity.timeRange}
               </div>
               <div className="flex-1 min-w-0">
@@ -72,7 +72,7 @@ export function QuickReference() {
         <div className="space-y-3">
           {eveningActivities.map((activity, index) => (
             <div key={index} className="flex items-center space-x-3 p-3 rounded-lg bg-white/70 dark:bg-card/50 border border-indigo-100 dark:border-indigo-800/50">
-              <div className="text-lg font-mono text-indigo-600 w-20 flex-shrink-0 text-center">
+              <div className="text-sm font-mono text-indigo-600 w-32 flex-shrink-0 text-center whitespace-nowrap">
                 {activity.timeRange}
               </div>
               <div className="flex-1 min-w-0">
