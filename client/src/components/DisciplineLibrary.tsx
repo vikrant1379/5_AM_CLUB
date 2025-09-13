@@ -214,12 +214,13 @@ export function DisciplineLibrary() {
         return (
           <div className="relative w-full h-48 md:h-56">
             <iframe
-              src={`https://www.youtube.com/embed/${item.embedId}?rel=0&showinfo=0&modestbranding=1`}
+              src={`https://www.youtube.com/embed/${item.embedId}?rel=0&showinfo=0&modestbranding=1&origin=${window.location.origin}`}
               title={item.title}
               className="absolute inset-0 w-full h-full rounded-t-lg"
               frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
+              sandbox="allow-scripts allow-same-origin allow-presentation"
             />
           </div>
         );
@@ -228,12 +229,13 @@ export function DisciplineLibrary() {
         return (
           <div className="relative w-full h-48 md:h-56">
             <iframe
-              src={`https://www.youtube.com/embed/${item.embedId}?rel=0&showinfo=0&modestbranding=1`}
+              src={`https://www.youtube.com/embed/${item.embedId}?rel=0&showinfo=0&modestbranding=1&origin=${window.location.origin}`}
               title={item.title}
               className="absolute inset-0 w-full h-full rounded-t-lg"
               frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
+              sandbox="allow-scripts allow-same-origin allow-presentation"
             />
           </div>
         );
