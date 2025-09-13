@@ -429,14 +429,17 @@ export function DisciplineLibrary({ onArticleStateChange }: DisciplineLibraryPro
 
       {/* True Full-Screen Article Reader */}
       {selectedArticle && (
-        <div className="fixed inset-0 z-[9999] bg-white dark:bg-gray-900 overflow-hidden">
+        <div 
+          className="fixed top-0 left-0 right-0 bottom-0 z-[9999] bg-white dark:bg-gray-900 overflow-hidden"
+          style={{ margin: 0, padding: 0, width: '100vw', height: '100vh' }}
+        >
           {/* Close Button */}
           <button
             onClick={() => handleArticleSelect(null)}
-            className="fixed top-4 right-4 z-[10000] p-3 bg-black/80 hover:bg-black/90 backdrop-blur-sm rounded-full shadow-lg transition-all duration-200"
+            className="fixed top-3 right-3 z-[10000] p-2 bg-black/90 hover:bg-black rounded-full shadow-xl transition-all duration-200"
             data-testid="button-close-article"
           >
-            <X className="h-6 w-6 text-white" />
+            <X className="h-5 w-5 text-white" />
           </button>
           
           {/* True Full-Screen Content */}
@@ -444,18 +447,22 @@ export function DisciplineLibrary({ onArticleStateChange }: DisciplineLibraryPro
             <iframe
               src={selectedArticle.externalUrl}
               title={selectedArticle.title}
-              className="absolute inset-0 w-full h-full border-0"
+              className="w-full h-full border-0 block"
+              style={{ margin: 0, padding: 0, width: '100%', height: '100%' }}
               sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"
             />
           ) : (
-            <div className="absolute inset-0 w-full h-full overflow-auto">
-              <div className="min-h-full p-8">
-                <div className="max-w-4xl mx-auto">
-                  <h1 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white pt-16">
+            <div 
+              className="w-full h-full overflow-auto"
+              style={{ margin: 0, padding: 0, width: '100vw', height: '100vh' }}
+            >
+              <div className="w-full min-h-full px-4 py-16">
+                <div className="w-full">
+                  <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                     {selectedArticle.title}
                   </h1>
                   <div 
-                    className="prose dark:prose-invert max-w-none text-lg leading-relaxed"
+                    className="prose dark:prose-invert prose-sm sm:prose-base max-w-none text-base leading-relaxed"
                     dangerouslySetInnerHTML={{ __html: selectedArticle.content || '' }}
                   />
                 </div>
