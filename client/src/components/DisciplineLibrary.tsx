@@ -2,9 +2,7 @@ import React, { useState, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Play, Pause, Clock, BookOpen, FileText, Headphones, Volume2, Eye, Download, ExternalLink, Maximize2 } from "lucide-react";
+import { Play, Pause, Clock, BookOpen, FileText, Headphones, Volume2, Eye, Download, ExternalLink, Maximize2, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ContentItem {
@@ -419,34 +417,41 @@ export function DisciplineLibrary() {
         </div>
       </Card>
 
-      {/* Article Reader Dialog */}
-      <Dialog open={selectedArticle !== null} onOpenChange={() => setSelectedArticle(null)}>
-        <DialogContent className="max-w-4xl max-h-[80vh] overflow-hidden">
-          <DialogHeader>
-            <DialogTitle className="flex items-center space-x-2">
-              <BookOpen className="h-5 w-5 text-blue-600" />
-              <span>{selectedArticle?.title}</span>
-            </DialogTitle>
-          </DialogHeader>
-          <ScrollArea className="mt-4 max-h-[60vh] pr-4">
-            {selectedArticle?.externalUrl ? (
-              <div className="w-full h-[50vh] border rounded-lg overflow-hidden">
-                <iframe
-                  src={selectedArticle.externalUrl}
-                  title={selectedArticle.title}
-                  className="w-full h-full border-0"
-                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+      {/* Full-Screen Article Reader */}
+      {selectedArticle && (
+        <div className="fixed inset-0 z-50 bg-white dark:bg-gray-900">
+          {/* Close Button */}
+          <button
+            onClick={() => setSelectedArticle(null)}
+            className="fixed top-4 right-4 z-60 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-800 transition-all duration-200"
+            data-testid="button-close-article"
+          >
+            <X className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+          </button>
+          
+          {/* Full-Screen Content */}
+          {selectedArticle.externalUrl ? (
+            <iframe
+              src={selectedArticle.externalUrl}
+              title={selectedArticle.title}
+              className="w-full h-full border-0"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"
+            />
+          ) : (
+            <div className="w-full h-full overflow-auto p-8">
+              <div className="max-w-4xl mx-auto">
+                <h1 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
+                  {selectedArticle.title}
+                </h1>
+                <div 
+                  className="prose dark:prose-invert max-w-none text-base leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: selectedArticle.content || '' }}
                 />
               </div>
-            ) : (
-              <div 
-                className="prose dark:prose-invert max-w-none text-sm leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: selectedArticle?.content || '' }}
-              />
-            )}
-          </ScrollArea>
-        </DialogContent>
-      </Dialog>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
