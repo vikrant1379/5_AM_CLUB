@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export function MotivationalQuote() {
-  // Inspiring discipline quotes from Indian leaders, philosophers, and spiritual masters
+  // Timeless discipline quotes from spiritual masters and ancient Indian philosophers
   const motivationalQuotes = [
     {
       quote: "Arise, awake, and stop not till the goal is reached.",
@@ -16,26 +16,6 @@ export function MotivationalQuote() {
       author: "Sri Sri Ravi Shankar"
     },
     {
-      quote: "Discipline and united action are the real source of strength for the nation.",
-      author: "Mahatma Gandhi"
-    },
-    {
-      quote: "Excellence is a continuous process and not an accident.",
-      author: "Dr. APJ Abdul Kalam"
-    },
-    {
-      quote: "Hard work never brings fatigue. It brings satisfaction.",
-      author: "Narendra Modi"
-    },
-    {
-      quote: "If you're clear in your mind and disciplined in your actions, you can face even the most complex challenges.",
-      author: "Nirmala Sitharaman"
-    },
-    {
-      quote: "Discipline is the DNA of leadership. Without self-discipline, one cannot lead others.",
-      author: "Dr. Kiran Bedi"
-    },
-    {
       quote: "No effort on this path is ever wasted.",
       author: "Bhagavad Gita"
     },
@@ -44,20 +24,12 @@ export function MotivationalQuote() {
       author: "Bhagavad Gita"
     },
     {
-      quote: "With faith, discipline and selfless devotion to duty, there is nothing worthwhile that you cannot achieve.",
-      author: "Muhammad Ali Jinnah"
-    },
-    {
       quote: "It is a good discipline to be forced to work for work's sake, even to the length of not being allowed to enjoy the fruits of one's labour.",
       author: "Swami Vivekananda"
     },
     {
       quote: "Discipline is the fire in which your talent becomes ability.",
       author: "Indian Proverb"
-    },
-    {
-      quote: "Learning gives creativity, creativity leads to thinking, thinking provides knowledge, knowledge makes you great.",
-      author: "APJ Abdul Kalam"
     },
     {
       quote: "Let me not pray to be sheltered from dangers, but to be fearless in facing them.",
@@ -90,6 +62,18 @@ export function MotivationalQuote() {
     {
       quote: "The human soul is on its journey from the law to love, from discipline to liberation.",
       author: "Rabindranath Tagore"
+    },
+    {
+      quote: "You can't cross the sea merely by standing and staring at the water.",
+      author: "Rabindranath Tagore"
+    },
+    {
+      quote: "There is no austerity equal to a balanced mind, and there is no happiness equal to contentment.",
+      author: "Chanakya"
+    },
+    {
+      quote: "The one excellent thing that can be learned from a lion is that whatever a man intends doing should be done by him with a whole-hearted and strenuous effort.",
+      author: "Chanakya"
     }
   ];
 
@@ -108,7 +92,7 @@ export function MotivationalQuote() {
     <div className="px-4 py-3">
       <div className="bg-gradient-to-r from-amber-100 via-orange-50 to-yellow-100 dark:from-slate-800/60 dark:via-slate-700/40 dark:to-slate-800/60 rounded-lg p-4 border border-amber-300 dark:border-slate-600/50 shadow-sm">
         <div className="text-center">
-          <div className="text-2xl mb-2">🕉️</div>
+          <div className="text-2xl mb-2">🪷</div>
           <div className="text-sm text-amber-900 dark:text-slate-200 italic mb-2 transition-all duration-500 ease-in-out leading-relaxed">
             "{motivationalQuotes[currentQuote].quote}"
           </div>
