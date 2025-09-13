@@ -10,6 +10,21 @@ import {
 } from "lucide-react";
 import { DISCIPLINE_SCHEDULE, KEY_RULES, MUST_POST_HIGHLIGHTS } from "@/data/disciplineSchedule";
 
+// Utility function to convert 12-hour time format to 24-hour format
+function convertTo24Hour(timeString: string): string {
+  return timeString.replace(/(\d{1,2}):(\d{2})\s*(AM|PM)/gi, (match, hours, minutes, period) => {
+    let hour24 = parseInt(hours, 10);
+    
+    if (period.toUpperCase() === 'PM' && hour24 !== 12) {
+      hour24 += 12;
+    } else if (period.toUpperCase() === 'AM' && hour24 === 12) {
+      hour24 = 0;
+    }
+    
+    return `${hour24.toString().padStart(2, '0')}:${minutes}`;
+  });
+}
+
 export function QuickReference() {
   const morningActivities = DISCIPLINE_SCHEDULE.filter(item => item.category === 'morning');
   const eveningActivities = DISCIPLINE_SCHEDULE.filter(item => item.category === 'evening');
@@ -40,7 +55,7 @@ export function QuickReference() {
           {morningActivities.map((activity, index) => (
             <div key={index} className="flex items-center space-x-3 p-3 rounded-lg bg-white/70 dark:bg-card/50 border border-orange-100 dark:border-orange-800/50">
               <div className="text-sm font-mono text-orange-600 w-32 flex-shrink-0 text-center whitespace-nowrap">
-                {activity.timeRange}
+                {convertTo24Hour(activity.timeRange)}
               </div>
               <div className="flex-1 min-w-0">
                 <p className="font-medium text-foreground text-sm leading-tight">
@@ -73,7 +88,7 @@ export function QuickReference() {
           {eveningActivities.map((activity, index) => (
             <div key={index} className="flex items-center space-x-3 p-3 rounded-lg bg-white/70 dark:bg-card/50 border border-indigo-100 dark:border-indigo-800/50">
               <div className="text-sm font-mono text-indigo-600 w-32 flex-shrink-0 text-center whitespace-nowrap">
-                {activity.timeRange}
+                {convertTo24Hour(activity.timeRange)}
               </div>
               <div className="flex-1 min-w-0">
                 <p className="font-medium text-foreground text-sm leading-tight">
