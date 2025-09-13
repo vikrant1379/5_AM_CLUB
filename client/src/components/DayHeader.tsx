@@ -1,4 +1,5 @@
 import { ThemeToggle } from "./ThemeToggle";
+import { useScrollDirection } from "@/hooks/useScrollDirection";
 
 interface DayHeaderProps {
   currentDay: number;
@@ -6,6 +7,7 @@ interface DayHeaderProps {
 }
 
 export function DayHeader({ currentDay, onDayChange }: DayHeaderProps) {
+  const showHeader = useScrollDirection();
 
   // Calculate countdown based on challenge dates
   const getChallengeStatus = () => {
@@ -46,7 +48,9 @@ export function DayHeader({ currentDay, onDayChange }: DayHeaderProps) {
   const challengeStatus = getChallengeStatus();
 
   return (
-        <div className="sticky top-0 z-50 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 backdrop-blur border-b border-amber-200 dark:border-slate-700/50">
+    <div className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 backdrop-blur border-b border-amber-200 dark:border-slate-700/50 transition-transform duration-300 ease-in-out ${
+      showHeader ? 'transform translate-y-0' : 'transform -translate-y-full'
+    }`}>
       <div className="max-w-md mx-auto">
         {/* Countdown Section */}
         <div className="flex items-center justify-between p-4">

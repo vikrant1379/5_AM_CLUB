@@ -52,7 +52,7 @@ export default function Home() {
         onDayChange={handleDayChange}
       />
       
-        <main className="max-w-md mx-auto">
+        <main className="max-w-md mx-auto pt-24">
           {activeTab === 'schedule' && (
             <>
               <MotivationalHero />

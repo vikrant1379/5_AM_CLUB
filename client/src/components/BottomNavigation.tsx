@@ -1,5 +1,6 @@
 import { Clock, BookOpen, FileText, Library } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useScrollDirection } from "@/hooks/useScrollDirection";
 
 interface BottomNavigationProps {
   activeTab: 'schedule' | 'reference' | 'rules' | 'library';
@@ -7,6 +8,7 @@ interface BottomNavigationProps {
 }
 
 export function BottomNavigation({ activeTab, onTabChange }: BottomNavigationProps) {
+  const showFooter = useScrollDirection();
   const tabs = [
     {
       id: 'schedule' as const,
@@ -39,7 +41,9 @@ export function BottomNavigation({ activeTab, onTabChange }: BottomNavigationPro
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-t border-border">
+    <div className={`fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-t border-border transition-transform duration-300 ease-in-out ${
+      showFooter ? 'transform translate-y-0' : 'transform translate-y-full'
+    }`}>
       <div className="max-w-md mx-auto">
         <div className="flex items-center justify-around py-2 px-4">
           {tabs.map((tab) => {
