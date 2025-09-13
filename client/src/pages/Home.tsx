@@ -5,6 +5,7 @@ import { DisciplineTimeline } from "@/components/DisciplineTimeline";
 import { FloatingQuote } from "@/components/FloatingQuote";
 import { QuickReference } from "@/components/QuickReference";
 import { MotivationalQuote } from "@/components/MotivationalQuote";
+import { MotivationalVideos } from "@/components/MotivationalVideos";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
   };
 
   const [currentDay, setCurrentDay] = useState(getCurrentChallengeDay());
-  const [activeTab, setActiveTab] = useState<'schedule' | 'reference' | 'rules'>('schedule');
+  const [activeTab, setActiveTab] = useState<'schedule' | 'reference' | 'rules' | 'videos'>('schedule');
   const timelineRef = useRef<HTMLDivElement>(null);
 
   const handleDayChange = (day: number) => {
@@ -68,6 +69,10 @@ export default function Home() {
 
           {activeTab === 'rules' && (
             <FloatingQuote />
+          )}
+
+          {activeTab === 'videos' && (
+            <MotivationalVideos />
           )}
         </main>
 
