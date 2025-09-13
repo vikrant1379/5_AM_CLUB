@@ -113,12 +113,12 @@ export function DisciplineLibrary() {
     },
     {
       id: "a3",
-      title: "The 5 AM Club - Robin Sharma Audio",
-      duration: "35 min",
-      theme: "Morning Routine",
+      title: "The 5 AM Club - Key Concepts Summary",
+      duration: "15 min",
+      theme: "Morning Routine", 
       type: "audiobook",
-      audioUrl: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav",
-      description: "Master your morning, elevate your life"
+      audioUrl: "https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3",
+      description: "Learn the 20/20/20 Formula for morning mastery (sample audio - upgrade for full content)"
     },
 
     // Articles
