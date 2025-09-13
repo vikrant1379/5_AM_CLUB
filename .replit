@@ -21,21 +21,17 @@ args = "Discipline Tracker App"
 name = "Discipline Tracker App"
 author = "agent"
 
+[workflows.workflow.metadata]
+outputType = "webview"
+
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "npm run dev"
 waitForPort = 5000
 
-[workflows.workflow.metadata]
-outputType = "webview"
-
 [[ports]]
 localPort = 5000
 externalPort = 80
-
-[[ports]]
-localPort = 40613
-externalPort = 3000
 
 [deployment]
 deploymentTarget = "autoscale"
