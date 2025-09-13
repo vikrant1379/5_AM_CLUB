@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,6 +28,39 @@ export function DisciplineLibrary() {
   const [playingAudio, setPlayingAudio] = useState<string | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<ContentItem | null>(null);
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});
+
+  const toggleAudio = (audioId: string, audioUrl: string) => {
+    // Stop currently playing audio
+    if (playingAudio && playingAudio !== audioId) {
+      const currentAudio = audioRefs.current[playingAudio];
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+    }
+
+    // Get or create audio element
+    if (!audioRefs.current[audioId]) {
+      audioRefs.current[audioId] = new Audio(audioUrl);
+    }
+
+    const audio = audioRefs.current[audioId];
+    
+    if (playingAudio === audioId) {
+      // Currently playing, pause it
+      audio.pause();
+      setPlayingAudio(null);
+    } else {
+      // Start playing
+      audio.play();
+      setPlayingAudio(audioId);
+      
+      // Handle end of audio
+      audio.onended = () => {
+        setPlayingAudio(null);
+      };
+    }
+  };
 
   const disciplineContent: ContentItem[] = [
     // Videos
@@ -59,14 +92,14 @@ export function DisciplineLibrary() {
       description: "Military-inspired discipline with powerful music"
     },
     
-    // Audiobooks (using YouTube audio)
+    // Audiobooks (using sample audio URLs)
     {
       id: "a1",
       title: "Discipline Equals Freedom - Field Manual",
       duration: "45 min",
       theme: "Self-Discipline",
       type: "audiobook",
-      embedId: "R1JBQMXm_ok",
+      audioUrl: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav",
       description: "Jocko Willink's complete guide to discipline and freedom"
     },
     {
@@ -75,7 +108,7 @@ export function DisciplineLibrary() {
       duration: "60 min",
       theme: "Mental Toughness",
       type: "audiobook",
-      embedId: "dGlaWNWkSQU", 
+      audioUrl: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav",
       description: "Transform your mind and unleash your inner warrior"
     },
     {
@@ -84,7 +117,7 @@ export function DisciplineLibrary() {
       duration: "35 min",
       theme: "Morning Routine",
       type: "audiobook",
-      embedId: "IlU0CSSE4I8",
+      audioUrl: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav",
       description: "Master your morning, elevate your life"
     },
 
@@ -206,16 +239,33 @@ export function DisciplineLibrary() {
         );
       
       case 'audiobook':
+        const isPlaying = playingAudio === item.id;
         return (
-          <div className="relative w-full h-48 md:h-56">
-            <iframe
-              src={`https://www.youtube.com/embed/${item.embedId}?rel=0&showinfo=0&modestbranding=1`}
-              title={item.title}
-              className="absolute inset-0 w-full h-full rounded-t-lg"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+          <div className="relative w-full h-48 md:h-56 bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900/20 dark:to-emerald-900/20 rounded-t-lg flex items-center justify-center">
+            <div className="text-center">
+              <div className="bg-green-600 p-4 rounded-full mb-4 mx-auto w-16 h-16 flex items-center justify-center">
+                <Volume2 className="h-8 w-8 text-white" />
+              </div>
+              <Button 
+                onClick={() => toggleAudio(item.id, item.audioUrl!)}
+                className={`${isPlaying ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700'} text-white`}
+              >
+                {isPlaying ? (
+                  <>
+                    <Pause className="h-4 w-4 mr-2" />
+                    Stop Audio
+                  </>
+                ) : (
+                  <>
+                    <Play className="h-4 w-4 mr-2" />
+                    Play Audio
+                  </>
+                )}
+              </Button>
+              {isPlaying && (
+                <p className="text-xs text-green-700 dark:text-green-300 mt-2">🎵 Playing...</p>
+              )}
+            </div>
           </div>
         );
 
