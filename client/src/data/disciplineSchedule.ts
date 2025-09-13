@@ -58,7 +58,7 @@ export const DISCIPLINE_SCHEDULE: ScheduleItem[] = [
   {
     time: "8:00 AM",
     timeRange: "8:00 AM – 8:15 AM",
-    activity: "Prayer/meditation/yoga/manifestation",
+    activity: "Prayer/meditation/yoga\n/manifestation",
     psychologicalImpact: "Inner peace & focus",
     category: "morning"
   },
