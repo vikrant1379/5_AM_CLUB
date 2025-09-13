@@ -212,11 +212,11 @@ export function DisciplineLibrary() {
     switch (item.type) {
       case 'video':
         return (
-          <div className="relative w-full h-48 md:h-56">
+          <div className="relative w-full h-48 md:h-56 overflow-hidden rounded-t-lg">
             <iframe
               src={`https://www.youtube.com/embed/${item.embedId}?rel=0&showinfo=0&modestbranding=1&origin=${window.location.origin}`}
               title={item.title}
-              className="absolute inset-0 w-full h-full rounded-t-lg"
+              className="absolute inset-0 w-full h-full"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
@@ -227,11 +227,11 @@ export function DisciplineLibrary() {
       
       case 'audiobook':
         return (
-          <div className="relative w-full h-48 md:h-56">
+          <div className="relative w-full h-48 md:h-56 overflow-hidden rounded-t-lg">
             <iframe
               src={`https://www.youtube.com/embed/${item.embedId}?rel=0&showinfo=0&modestbranding=1&origin=${window.location.origin}`}
               title={item.title}
-              className="absolute inset-0 w-full h-full rounded-t-lg"
+              className="absolute inset-0 w-full h-full"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
