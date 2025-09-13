@@ -14,45 +14,59 @@ export function MotivationalVideos() {
   const motivationalVideos: VideoData[] = [
     {
       id: "1",
-      title: "Discipline Yourself - The Power of Self Control",
+      title: "DISCIPLINE YOURSELF - The Power of Self Control",
       duration: "8 min",
       theme: "Self-Discipline",
       embedId: "DG-oAF1i_UA"
     },
     {
       id: "2", 
-      title: "Morning Motivation - Start Your Day Right",
+      title: "TURN YOURSELF INTO A MONSTER - David Goggins",
       duration: "12 min",
-      theme: "Morning Routine",
-      embedId: "IdTMDpizis8"
+      theme: "Mental Toughness",
+      embedId: "5tSTk1083VY"
     },
     {
       id: "3",
-      title: "The Power of Discipline - Navy SEAL Motivation",
-      duration: "6 min", 
+      title: "UNSTOPPABLE - Jocko Willink & David Goggins",
+      duration: "10 min", 
+      theme: "Self-Discipline",
+      embedId: "IdTMDpizis8"
+    },
+    {
+      id: "4",
+      title: "INNER STRENGTH & DISCIPLINE - Navy SEAL Power",
+      duration: "9 min",
       theme: "Mental Toughness",
       embedId: "78I9dTB9vqM"
     },
     {
-      id: "4",
-      title: "Rise and Grind - Unstoppable Mindset",
-      duration: "10 min",
-      theme: "Motivation",
+      id: "5",
+      title: "THE MOST SAVAGE 5 MINUTES OF YOUR LIFE",
+      duration: "5 min",
+      theme: "Self-Discipline",
       embedId: "hbkZrOU1Zag"
     },
     {
-      id: "5",
-      title: "Build Unbreakable Habits",
-      duration: "15 min",
-      theme: "Habit Building",
+      id: "6",
+      title: "BE UNCOMFORTABLE EVERYDAY - Navy SEAL Motivation",
+      duration: "11 min",
+      theme: "Mental Toughness",
+      embedId: "mgmVOuLgFB0"
+    },
+    {
+      id: "7",
+      title: "DISCIPLINE EQUALS FREEDOM - Jocko Willink",
+      duration: "7 min",
+      theme: "Self-Discipline",
       embedId: "TQMbvJNRpLE"
     },
     {
-      id: "6",
-      title: "Overcome Your Fears - Be Unstoppable",
-      duration: "7 min",
-      theme: "Courage",
-      embedId: "mgmVOuLgFB0"
+      id: "8",
+      title: "STOP BEING WEAK - Powerful Mindset Shift",
+      duration: "6 min",
+      theme: "Mental Toughness",
+      embedId: "EyhOmBPtGNM"
     }
   ];
 
