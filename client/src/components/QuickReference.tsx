@@ -39,7 +39,7 @@ export function QuickReference() {
         <div className="space-y-3">
           {morningActivities.map((activity, index) => (
             <div key={index} className="flex items-center space-x-3 p-3 rounded-lg bg-white/70 dark:bg-card/50 border border-orange-100 dark:border-orange-800/50">
-              <div className="text-lg font-mono text-orange-600 min-w-0 flex-shrink-0">
+              <div className="text-lg font-mono text-orange-600 w-20 flex-shrink-0 text-center">
                 {activity.timeRange}
               </div>
               <div className="flex-1 min-w-0">
@@ -72,7 +72,7 @@ export function QuickReference() {
         <div className="space-y-3">
           {eveningActivities.map((activity, index) => (
             <div key={index} className="flex items-center space-x-3 p-3 rounded-lg bg-white/70 dark:bg-card/50 border border-indigo-100 dark:border-indigo-800/50">
-              <div className="text-lg font-mono text-indigo-600 min-w-0 flex-shrink-0">
+              <div className="text-lg font-mono text-indigo-600 w-20 flex-shrink-0 text-center">
                 {activity.timeRange}
               </div>
               <div className="flex-1 min-w-0">
@@ -105,7 +105,7 @@ export function QuickReference() {
         <div className="space-y-3">
           {KEY_RULES.map((rule, index) => (
             <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-white/70 dark:bg-card/50 border border-green-100 dark:border-green-800/50">
-              <div className="text-2xl flex-shrink-0">
+              <div className="text-2xl flex-shrink-0 w-8 h-8 flex items-center justify-center">
                 {rule.icon}
               </div>
               <div className="flex-1 min-w-0">
@@ -133,7 +133,7 @@ export function QuickReference() {
         <div className="grid grid-cols-1 gap-2">
           {MUST_POST_HIGHLIGHTS.map((highlight, index) => (
             <div key={index} className="flex items-center space-x-3 p-2 rounded-lg bg-white/70 dark:bg-card/50 border border-emerald-100 dark:border-emerald-800/50">
-              <div className="text-lg">
+              <div className="text-lg flex-shrink-0 w-8 h-8 flex items-center justify-center">
                 {highlight.icon}
               </div>
               <div className="flex-1">
@@ -159,25 +159,25 @@ export function QuickReference() {
         </div>
         
         <div className="space-y-3 text-sm">
-          <div className="flex items-start space-x-2">
-            <span className="text-purple-600 font-bold">•</span>
-            <p className="text-muted-foreground">Start with just 3 days to build momentum</p>
+          <div className="flex items-start space-x-3">
+            <span className="text-purple-600 font-bold flex-shrink-0 w-4 h-4 flex items-center justify-center">•</span>
+            <p className="text-muted-foreground flex-1">Start with just 3 days to build momentum</p>
           </div>
-          <div className="flex items-start space-x-2">
-            <span className="text-purple-600 font-bold">•</span>
-            <p className="text-muted-foreground">Focus on the morning routine first - it sets the tone</p>
+          <div className="flex items-start space-x-3">
+            <span className="text-purple-600 font-bold flex-shrink-0 w-4 h-4 flex items-center justify-center">•</span>
+            <p className="text-muted-foreground flex-1">Focus on the morning routine first - it sets the tone</p>
           </div>
-          <div className="flex items-start space-x-2">
-            <span className="text-purple-600 font-bold">•</span>
-            <p className="text-muted-foreground">Personal Mastery Hour is your growth engine</p>
+          <div className="flex items-start space-x-3">
+            <span className="text-purple-600 font-bold flex-shrink-0 w-4 h-4 flex items-center justify-center">•</span>
+            <p className="text-muted-foreground flex-1">Personal Mastery Hour is your growth engine</p>
           </div>
-          <div className="flex items-start space-x-2">
-            <span className="text-purple-600 font-bold">•</span>
-            <p className="text-muted-foreground">Evening workouts help you sleep better</p>
+          <div className="flex items-start space-x-3">
+            <span className="text-purple-600 font-bold flex-shrink-0 w-4 h-4 flex items-center justify-center">•</span>
+            <p className="text-muted-foreground flex-1">Evening workouts help you sleep better</p>
           </div>
-          <div className="flex items-start space-x-2">
-            <span className="text-purple-600 font-bold">•</span>
-            <p className="text-muted-foreground">Consistency beats perfection every time</p>
+          <div className="flex items-start space-x-3">
+            <span className="text-purple-600 font-bold flex-shrink-0 w-4 h-4 flex items-center justify-center">•</span>
+            <p className="text-muted-foreground flex-1">Consistency beats perfection every time</p>
           </div>
         </div>
       </Card>
