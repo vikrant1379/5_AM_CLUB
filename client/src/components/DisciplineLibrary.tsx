@@ -57,51 +57,51 @@ export function DisciplineLibrary() {
       description: "Military-inspired discipline with powerful music"
     },
     
-    // Book Summaries (Great Ideas Great Life India & SeeKen)
+    // Book Summaries (Working YouTube Videos)
     {
       id: "bs1",
-      title: "Atomic Habits - Build Good Habits & Break Bad Ones | GIGL",
-      duration: "25 min",
+      title: "How to Build Good Habits & Break Bad Ones - Atomic Habits",
+      duration: "18 min",
       theme: "Self-Discipline",
       type: "audiobook",
-      embedId: "KJqGNFs4uRo",
-      description: "Complete book summary in Hindi from Great Ideas Great Life India"
+      embedId: "7ICezBlXzN8",
+      description: "James Clear's complete guide to building habits that stick"
     },
     {
       id: "bs2",
-      title: "The Power of Discipline - Mental Toughness | SeeKen",
-      duration: "20 min",
+      title: "The Power of Discipline - Why Motivation Fails",
+      duration: "15 min",
       theme: "Mental Toughness",
       type: "audiobook",
-      embedId: "mPK8GqW3LrE",
-      description: "How to use self control and mental toughness to achieve your goals"
+      embedId: "k2Wcu6aGyz8",
+      description: "Understanding why discipline beats motivation every time"
     },
     {
       id: "bs3",
-      title: "Think and Grow Rich - Success Mindset | GIGL",
-      duration: "30 min",
+      title: "Think and Grow Rich - Napoleon Hill Summary",
+      duration: "22 min",
       theme: "Success Mindset", 
       type: "audiobook",
-      embedId: "JCYjggU8dqI",
-      description: "Napoleon Hill's classic on success and wealth mindset in Hindi"
+      embedId: "UyKEAQeoYP4",
+      description: "The classic principles of success and wealth creation"
     },
     {
       id: "bs4",
-      title: "The 7 Habits of Highly Effective People | SeeKen",
-      duration: "40 min",
+      title: "7 Habits of Highly Effective People - Full Summary",
+      duration: "30 min",
       theme: "Self-Discipline",
       type: "audiobook",
-      embedId: "vI2n1iugBsI",
+      embedId: "ktlTxC4QG8g",
       description: "Stephen Covey's timeless principles for personal effectiveness"
     },
     {
       id: "bs5",
-      title: "Rich Dad Poor Dad - Financial Education | GIGL",
-      duration: "35 min",
+      title: "Rich Dad Poor Dad - Complete Book Summary",
+      duration: "25 min",
       theme: "Financial Freedom",
       type: "audiobook",
-      embedId: "4LN4qWmSWE0",
-      description: "Robert Kiyosaki's lessons on money and investing in Hindi"
+      embedId: "azq0S0DKS50",
+      description: "Robert Kiyosaki's lessons on money and financial education"
     },
 
     // Articles
