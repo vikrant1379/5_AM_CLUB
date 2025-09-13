@@ -57,33 +57,51 @@ export function DisciplineLibrary() {
       description: "Military-inspired discipline with powerful music"
     },
     
-    // Audiobooks (using YouTube videos)
+    // Book Summaries (Great Ideas Great Life India & SeeKen)
     {
-      id: "a1",
-      title: "Discipline Equals Freedom - Jocko Willink",
-      duration: "45 min",
+      id: "bs1",
+      title: "Atomic Habits - Build Good Habits & Break Bad Ones | GIGL",
+      duration: "25 min",
       theme: "Self-Discipline",
       type: "audiobook",
-      embedId: "R1JBQMXm_ok",
-      description: "Jocko Willink's complete guide to discipline and freedom"
+      embedId: "KJqGNFs4uRo",
+      description: "Complete book summary in Hindi from Great Ideas Great Life India"
     },
     {
-      id: "a2",
-      title: "Can't Hurt Me - David Goggins Motivation",
-      duration: "60 min",
+      id: "bs2",
+      title: "The Power of Discipline - Mental Toughness | SeeKen",
+      duration: "20 min",
       theme: "Mental Toughness",
       type: "audiobook",
-      embedId: "5tSTk1083VY",
-      description: "Transform your mind and unleash your inner warrior"
+      embedId: "mPK8GqW3LrE",
+      description: "How to use self control and mental toughness to achieve your goals"
     },
     {
-      id: "a3",
-      title: "The 5 AM Club - Robin Sharma Motivation",
-      duration: "35 min",
-      theme: "Morning Routine", 
+      id: "bs3",
+      title: "Think and Grow Rich - Success Mindset | GIGL",
+      duration: "30 min",
+      theme: "Success Mindset", 
       type: "audiobook",
-      embedId: "IlU0CSSE4I8",
-      description: "Master your morning, elevate your life with powerful insights"
+      embedId: "JCYjggU8dqI",
+      description: "Napoleon Hill's classic on success and wealth mindset in Hindi"
+    },
+    {
+      id: "bs4",
+      title: "The 7 Habits of Highly Effective People | SeeKen",
+      duration: "40 min",
+      theme: "Self-Discipline",
+      type: "audiobook",
+      embedId: "vI2n1iugBsI",
+      description: "Stephen Covey's timeless principles for personal effectiveness"
+    },
+    {
+      id: "bs5",
+      title: "Rich Dad Poor Dad - Financial Education | GIGL",
+      duration: "35 min",
+      theme: "Financial Freedom",
+      type: "audiobook",
+      embedId: "4LN4qWmSWE0",
+      description: "Robert Kiyosaki's lessons on money and investing in Hindi"
     },
 
     // Articles
@@ -145,24 +163,24 @@ export function DisciplineLibrary() {
       `
     },
 
-    // PDFs (Links to discipline resources)
+    // PDFs (Discipline resources)
     {
       id: "p1",
+      title: "100 Days of Transformation - Complete Framework",
+      readTime: "25 min",
+      theme: "Daily Discipline",
+      type: "pdf",
+      pdfUrl: "/pdfs/100-days-transformation.pdf",
+      description: "Your complete daily discipline framework: Win the morning, win the day - motivation fades, discipline stays"
+    },
+    {
+      id: "p2",
       title: "The Complete Discipline Manual",
       readTime: "45 min",
       theme: "Self-Discipline",
       type: "pdf",
       pdfUrl: "https://www.jockowillink.com/application/files/1716/6502/3851/Extreme_Ownership.pdf",
       description: "Comprehensive guide to building unbreakable habits and mental toughness"
-    },
-    {
-      id: "p2",
-      title: "100-Day Challenge Blueprint",
-      readTime: "25 min",
-      theme: "Challenge",
-      type: "pdf",
-      pdfUrl: "https://jamesclear.com/wp-content/uploads/2023/01/atomic-habits-summary.pdf",
-      description: "Step-by-step system for transforming your life in 100 days"
     }
   ];
 
@@ -172,7 +190,7 @@ export function DisciplineLibrary() {
 
   const contentTypes = [
     { id: 'video', label: 'Videos', icon: Play, color: 'text-red-600', bgColor: 'bg-red-50' },
-    { id: 'audiobook', label: 'Audio', icon: Headphones, color: 'text-green-600', bgColor: 'bg-green-50' },
+    { id: 'audiobook', label: 'Book Summary', icon: BookOpen, color: 'text-green-600', bgColor: 'bg-green-50' },
     { id: 'article', label: 'Articles', icon: FileText, color: 'text-blue-600', bgColor: 'bg-blue-50' },
     { id: 'pdf', label: 'PDFs', icon: Download, color: 'text-purple-600', bgColor: 'bg-purple-50' }
   ];
@@ -182,6 +200,9 @@ export function DisciplineLibrary() {
       "Self-Discipline": "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400",
       "Mental Toughness": "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400", 
       "Morning Routine": "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400",
+      "Success Mindset": "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400",
+      "Financial Freedom": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/20 dark:text-emerald-400",
+      "Daily Discipline": "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400",
       "Challenge": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/20 dark:text-indigo-400"
     };
     return colors[theme] || "bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400";
