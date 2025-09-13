@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { YouTubePlayer } from "@/components/YouTubePlayer";
 import { Play, Clock, BookOpen } from "lucide-react";
 
 interface VideoData {
@@ -102,16 +103,11 @@ export function MotivationalVideos() {
           <Card key={video.id} className="p-0 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-800 dark:via-slate-700 dark:to-slate-800 border-slate-200 dark:border-slate-600 shadow-lg overflow-hidden">
             <div className="relative">
               {/* Video Embed */}
-              <div className="relative w-full h-48 md:h-56">
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.embedId}?rel=0&showinfo=0&modestbranding=1`}
-                  title={video.title}
-                  className="absolute inset-0 w-full h-full rounded-t-lg"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+              <YouTubePlayer
+                embedId={video.embedId}
+                title={video.title}
+                className="relative w-full h-48 md:h-56"
+              />
               
               {/* Video Info Overlay */}
               <div className="p-4">

@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { YouTubePlayer } from "@/components/YouTubePlayer";
 import { Play, Pause, Clock, BookOpen, FileText, Headphones, Volume2, Eye, Download, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -212,30 +213,20 @@ export function DisciplineLibrary() {
     switch (item.type) {
       case 'video':
         return (
-          <div className="relative w-full h-48 md:h-56">
-            <iframe
-              src={`https://www.youtube.com/embed/${item.embedId}?rel=0&showinfo=0&modestbranding=1`}
-              title={item.title}
-              className="absolute inset-0 w-full h-full rounded-t-lg"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
+          <YouTubePlayer
+            embedId={item.embedId!}
+            title={item.title}
+            className="relative w-full h-48 md:h-56"
+          />
         );
       
       case 'audiobook':
         return (
-          <div className="relative w-full h-48 md:h-56">
-            <iframe
-              src={`https://www.youtube.com/embed/${item.embedId}?rel=0&showinfo=0&modestbranding=1`}
-              title={item.title}
-              className="absolute inset-0 w-full h-full rounded-t-lg"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
+          <YouTubePlayer
+            embedId={item.embedId!}
+            title={item.title}
+            className="relative w-full h-48 md:h-56"
+          />
         );
 
       case 'article':
