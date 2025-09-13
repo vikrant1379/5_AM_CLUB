@@ -22,9 +22,19 @@ interface ContentItem {
 
 type ContentType = 'video' | 'audiobook' | 'article' | 'pdf';
 
-export function DisciplineLibrary() {
+interface DisciplineLibraryProps {
+  onArticleStateChange?: (isOpen: boolean) => void;
+}
+
+export function DisciplineLibrary({ onArticleStateChange }: DisciplineLibraryProps) {
   const [activeContentType, setActiveContentType] = useState<ContentType>('video');
   const [selectedArticle, setSelectedArticle] = useState<ContentItem | null>(null);
+
+  // Notify parent component when article state changes
+  const handleArticleSelect = (article: ContentItem | null) => {
+    setSelectedArticle(article);
+    onArticleStateChange?.(article !== null);
+  };
 
   const disciplineContent: ContentItem[] = [
     // Videos
@@ -263,7 +273,7 @@ export function DisciplineLibrary() {
                 <Button
                   size="sm"
                   variant="secondary"
-                  onClick={() => setSelectedArticle(item)}
+                  onClick={() => handleArticleSelect(item)}
                   className="bg-white/90 hover:bg-white text-gray-900 shadow-lg border"
                   data-testid={`button-expand-${item.id}`}
                 >
@@ -291,7 +301,7 @@ export function DisciplineLibrary() {
                   <Eye className="h-8 w-8 text-white" />
                 </div>
                 <Button 
-                  onClick={() => setSelectedArticle(item)}
+                  onClick={() => handleArticleSelect(item)}
                   className="bg-blue-600 hover:bg-blue-700 text-white"
                 >
                   <BookOpen className="h-4 w-4 mr-2" />
@@ -417,36 +427,38 @@ export function DisciplineLibrary() {
         </div>
       </Card>
 
-      {/* Full-Screen Article Reader */}
+      {/* True Full-Screen Article Reader */}
       {selectedArticle && (
-        <div className="fixed inset-0 z-50 bg-white dark:bg-gray-900">
+        <div className="fixed inset-0 z-[9999] bg-white dark:bg-gray-900 overflow-hidden">
           {/* Close Button */}
           <button
-            onClick={() => setSelectedArticle(null)}
-            className="fixed top-4 right-4 z-60 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-800 transition-all duration-200"
+            onClick={() => handleArticleSelect(null)}
+            className="fixed top-4 right-4 z-[10000] p-3 bg-black/80 hover:bg-black/90 backdrop-blur-sm rounded-full shadow-lg transition-all duration-200"
             data-testid="button-close-article"
           >
-            <X className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+            <X className="h-6 w-6 text-white" />
           </button>
           
-          {/* Full-Screen Content */}
+          {/* True Full-Screen Content */}
           {selectedArticle.externalUrl ? (
             <iframe
               src={selectedArticle.externalUrl}
               title={selectedArticle.title}
-              className="w-full h-full border-0"
+              className="absolute inset-0 w-full h-full border-0"
               sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"
             />
           ) : (
-            <div className="w-full h-full overflow-auto p-8">
-              <div className="max-w-4xl mx-auto">
-                <h1 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
-                  {selectedArticle.title}
-                </h1>
-                <div 
-                  className="prose dark:prose-invert max-w-none text-base leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: selectedArticle.content || '' }}
-                />
+            <div className="absolute inset-0 w-full h-full overflow-auto">
+              <div className="min-h-full p-8">
+                <div className="max-w-4xl mx-auto">
+                  <h1 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white pt-16">
+                    {selectedArticle.title}
+                  </h1>
+                  <div 
+                    className="prose dark:prose-invert max-w-none text-lg leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: selectedArticle.content || '' }}
+                  />
+                </div>
               </div>
             </div>
           )}

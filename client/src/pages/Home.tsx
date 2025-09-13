@@ -28,6 +28,7 @@ export default function Home() {
 
   const [currentDay, setCurrentDay] = useState(getCurrentChallengeDay());
   const [activeTab, setActiveTab] = useState<'schedule' | 'reference' | 'rules' | 'library'>('schedule');
+  const [isArticleOpen, setIsArticleOpen] = useState(false);
   const timelineRef = useRef<HTMLDivElement>(null);
 
   const handleDayChange = (day: number) => {
@@ -72,14 +73,16 @@ export default function Home() {
           )}
 
           {activeTab === 'library' && (
-            <DisciplineLibrary />
+            <DisciplineLibrary onArticleStateChange={setIsArticleOpen} />
           )}
         </main>
 
-      <BottomNavigation 
-        activeTab={activeTab} 
-        onTabChange={setActiveTab}
-      />
+      {!isArticleOpen && (
+        <BottomNavigation 
+          activeTab={activeTab} 
+          onTabChange={setActiveTab}
+        />
+      )}
     </div>
   );
 }
