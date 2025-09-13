@@ -5,7 +5,7 @@ import { DisciplineTimeline } from "@/components/DisciplineTimeline";
 import { FloatingQuote } from "@/components/FloatingQuote";
 import { QuickReference } from "@/components/QuickReference";
 import { MotivationalQuote } from "@/components/MotivationalQuote";
-import { ArticlesLibrary } from "@/components/ArticlesLibrary";
+import { DisciplineLibrary } from "@/components/DisciplineLibrary";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
 export default function Home() {
@@ -72,7 +72,7 @@ export default function Home() {
           )}
 
           {activeTab === 'library' && (
-            <ArticlesLibrary />
+            <DisciplineLibrary />
           )}
         </main>
 
