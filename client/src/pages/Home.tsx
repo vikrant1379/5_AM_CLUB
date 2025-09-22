@@ -14,7 +14,7 @@ const getCurrentChallengeDay = () => {
   const challengeStart = new Date('2025-09-22'); // September 22, 2025
   
   const timeDiff = today.getTime() - challengeStart.getTime();
-  const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
   
   if (daysDiff < 0) {
     return 1; // Before challenge starts, show day 1

@@ -16,7 +16,7 @@ export function DayHeader({ currentDay, onDayChange }: DayHeaderProps) {
     const challengeEnd = new Date('2025-12-30'); // December 30, 2025
 
     const timeDiff = challengeStart.getTime() - today.getTime();
-    const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    const daysRemaining = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
     if (daysRemaining > 0) {
       // Before challenge starts
