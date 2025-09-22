@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { DayHeader } from "@/components/DayHeader";
 import { MotivationalHero } from "@/components/MotivationalHero";
 import { DisciplineTimeline } from "@/components/DisciplineTimeline";
@@ -8,25 +8,35 @@ import { MotivationalQuote } from "@/components/MotivationalQuote";
 import { DisciplineLibrary } from "@/components/DisciplineLibrary";
 import { BottomNavigation } from "@/components/BottomNavigation";
 
-export default function Home() {
-  // Calculate current day automatically based on challenge dates
-  const getCurrentChallengeDay = () => {
-    const today = new Date();
-    const challengeStart = new Date('2025-09-22'); // September 22, 2025
-    
-    const timeDiff = today.getTime() - challengeStart.getTime();
-    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-    
-    if (daysDiff < 0) {
-      return 1; // Before challenge starts, show day 1
-    } else if (daysDiff >= 0 && daysDiff < 100) {
-      return daysDiff + 1; // Day 1, 2, 3... during challenge
-    } else {
-      return 100; // After challenge ends, show day 100
-    }
-  };
+// Calculate current day automatically based on challenge dates
+const getCurrentChallengeDay = () => {
+  const today = new Date();
+  const challengeStart = new Date('2025-09-22'); // September 22, 2025
+  
+  const timeDiff = today.getTime() - challengeStart.getTime();
+  const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  
+  if (daysDiff < 0) {
+    return 1; // Before challenge starts, show day 1
+  } else if (daysDiff >= 0 && daysDiff < 100) {
+    return daysDiff + 1; // Day 1, 2, 3... during challenge
+  } else {
+    return 100; // After challenge ends, show day 100
+  }
+};
 
+export default function Home() {
   const [currentDay, setCurrentDay] = useState(getCurrentChallengeDay());
+
+  // Auto-update current day every second for real-time midnight transitions
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const newDay = getCurrentChallengeDay();
+      setCurrentDay(newDay);
+    }, 1000); // Update every second
+
+    return () => clearInterval(timer);
+  }, []);
   const [activeTab, setActiveTab] = useState<'schedule' | 'reference' | 'rules' | 'library'>('schedule');
   const [isArticleOpen, setIsArticleOpen] = useState(false);
   const timelineRef = useRef<HTMLDivElement>(null);

@@ -9,13 +9,13 @@ interface ChallengeCalendarProps {
 }
 
 export function ChallengeCalendar({ currentDay, onDaySelect }: ChallengeCalendarProps) {
-  const [challengeStartDate] = useState(new Date('2025-09-01')); // September 1, 2025
+  const [challengeStartDate] = useState(new Date('2025-09-22')); // September 22, 2025
   const [today, setToday] = useState(new Date());
 
   useEffect(() => {
     const timer = setInterval(() => {
       setToday(new Date());
-    }, 60000); // Update every minute
+    }, 1000); // Update every second for real-time updates
 
     return () => clearInterval(timer);
   }, []);
