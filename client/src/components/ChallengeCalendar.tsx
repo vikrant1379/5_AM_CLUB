@@ -1,7 +1,7 @@
 import { Calendar, Flame, CheckCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { getChallengeStartDate, getDateForChallengeDay, getCurrentChallengeStatus } from "@/lib/challengeUtils";
 
 interface ChallengeCalendarProps {
   currentDay: number;
@@ -9,40 +9,16 @@ interface ChallengeCalendarProps {
 }
 
 export function ChallengeCalendar({ currentDay, onDaySelect }: ChallengeCalendarProps) {
-  const [challengeStartDate] = useState(new Date('2025-09-22')); // September 22, 2025
-  const [today, setToday] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setToday(new Date());
-    }, 1000); // Update every second for real-time updates
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const getDayOfChallenge = (date: Date): number => {
-    const diffTime = date.getTime() - challengeStartDate.getTime();
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays + 1;
-  };
-
-  const getDateForDay = (day: number): Date => {
-    const date = new Date(challengeStartDate);
-    date.setDate(challengeStartDate.getDate() + day - 1);
-    return date;
-  };
-
-  const getCurrentChallengeDay = (): number => {
-    return getDayOfChallenge(today);
-  };
-
-  const actualCurrentDay = getCurrentChallengeDay();
-  const isActive = actualCurrentDay >= 1 && actualCurrentDay <= 100;
+  const challengeStartDate = getChallengeStartDate();
+  const challengeStatus = getCurrentChallengeStatus();
+  
+  const actualCurrentDay = challengeStatus.currentDay;
+  const isActive = challengeStatus.status === 'active';
 
   const renderWeek = (startDay: number) => {
     const days = [];
     for (let day = startDay; day < startDay + 7 && day <= 100; day++) {
-      const date = getDateForDay(day);
+      const date = getDateForChallengeDay(day);
       const isToday = actualCurrentDay === day && isActive;
       const isPast = day < actualCurrentDay && isActive;
       const isFuture = day > actualCurrentDay || !isActive;

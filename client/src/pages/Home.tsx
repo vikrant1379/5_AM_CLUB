@@ -7,32 +7,16 @@ import { QuickReference } from "@/components/QuickReference";
 import { MotivationalQuote } from "@/components/MotivationalQuote";
 import { DisciplineLibrary } from "@/components/DisciplineLibrary";
 import { BottomNavigation } from "@/components/BottomNavigation";
-
-// Calculate current day automatically based on challenge dates
-const getCurrentChallengeDay = () => {
-  const today = new Date();
-  const challengeStart = new Date('2025-09-22'); // September 22, 2025
-  
-  const timeDiff = today.getTime() - challengeStart.getTime();
-  const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-  
-  if (daysDiff < 0) {
-    return 1; // Before challenge starts, show day 1
-  } else if (daysDiff >= 0 && daysDiff < 100) {
-    return daysDiff + 1; // Day 1, 2, 3... during challenge
-  } else {
-    return 100; // After challenge ends, show day 100
-  }
-};
+import { getCurrentChallengeStatus } from "@/lib/challengeUtils";
 
 export default function Home() {
-  const [currentDay, setCurrentDay] = useState(getCurrentChallengeDay());
+  const [challengeStatus, setChallengeStatus] = useState(getCurrentChallengeStatus());
 
-  // Auto-update current day every second for real-time midnight transitions
+  // Auto-update challenge status for real-time midnight transitions
   useEffect(() => {
     const timer = setInterval(() => {
-      const newDay = getCurrentChallengeDay();
-      setCurrentDay(newDay);
+      const newStatus = getCurrentChallengeStatus();
+      setChallengeStatus(newStatus);
     }, 1000); // Update every second
 
     return () => clearInterval(timer);
@@ -42,7 +26,7 @@ export default function Home() {
   const timelineRef = useRef<HTMLDivElement>(null);
 
   const handleDayChange = (day: number) => {
-    setCurrentDay(day);
+    setChallengeStatus(prev => ({ ...prev, currentDay: day }));
   };
 
   const handleStartDay = () => {
@@ -53,13 +37,13 @@ export default function Home() {
         block: 'start' 
       });
     }
-    console.log(`Starting Day ${currentDay} - scrolling to timeline`);
+    console.log(`Starting Day ${challengeStatus.currentDay} - scrolling to timeline`);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 pb-20">
       <DayHeader
-        currentDay={currentDay}
+        currentDay={challengeStatus.currentDay}
         onDayChange={handleDayChange}
       />
       

@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
+import { getCurrentChallengeStatus } from "@/lib/challengeUtils";
 
 interface DayHeaderProps {
   currentDay: number;
@@ -8,44 +10,18 @@ interface DayHeaderProps {
 
 export function DayHeader({ currentDay, onDayChange }: DayHeaderProps) {
   const showHeader = useScrollDirection();
+  const [currentTime, setCurrentTime] = useState(new Date());
 
-  // Calculate countdown based on challenge dates
-  const getChallengeStatus = () => {
-    const today = new Date();
-    const challengeStart = new Date('2025-09-22'); // September 22, 2025
-    const challengeEnd = new Date('2025-12-30'); // December 30, 2025
+  const challengeStatus = getCurrentChallengeStatus();
 
-    const timeDiff = challengeStart.getTime() - today.getTime();
-    const daysRemaining = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+  // Update time every second for real-time display
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
 
-    if (daysRemaining > 0) {
-      // Before challenge starts
-      return {
-        status: 'countdown',
-        days: -daysRemaining, // negative number for countdown display
-        totalDays: 100,
-        progress: 0
-      };
-    } else if (daysRemaining <= 0 && daysRemaining >= -100) {
-      // During challenge
-      return {
-        status: 'active',
-        days: Math.abs(daysRemaining) + 1, // Day 1, 2, 3...
-        totalDays: 100,
-        progress: Math.min((Math.abs(daysRemaining) + 1) / 100, 1)
-      };
-    } else {
-      // After challenge ends
-      return {
-        status: 'completed',
-        days: 100,
-        totalDays: 100,
-        progress: 1
-      };
-    }
-  };
-
-  const challengeStatus = getChallengeStatus();
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 backdrop-blur border-b border-amber-200 dark:border-slate-700/50 transition-transform duration-300 ease-in-out ${
@@ -58,11 +34,11 @@ export function DayHeader({ currentDay, onDayChange }: DayHeaderProps) {
             <h1 className="text-lg font-semibold text-amber-900 dark:text-slate-100" data-testid="text-day-counter">
               {challengeStatus.status === 'countdown' ? (
                 <span className="text-orange-700 dark:text-orange-400 font-bold">
-                  {challengeStatus.days}/100 days
+                  {challengeStatus.daysUntilStart ? `-${challengeStatus.daysUntilStart}` : '0'}/100 days
                 </span>
               ) : challengeStatus.status === 'active' ? (
                 <span className="text-green-700 dark:text-emerald-400 font-bold">
-                  Day {challengeStatus.days}/100
+                  Day {challengeStatus.currentDay}/100
                 </span>
               ) : (
                 <span className="text-indigo-700 dark:text-emerald-400 font-bold">
@@ -79,8 +55,11 @@ export function DayHeader({ currentDay, onDayChange }: DayHeaderProps) {
                 <span>Challenge completed</span>
               )}
             </div>
-            <div className="text-xs text-amber-600 dark:text-slate-500">
-              {new Date().toLocaleTimeString('en-US', { 
+            <div className="text-sm font-medium text-amber-800 dark:text-slate-300 mt-2">
+              {currentTime.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric' 
+              })}, {currentTime.toLocaleTimeString('en-US', { 
                 hour: 'numeric', 
                 minute: '2-digit',
                 hour12: true 
